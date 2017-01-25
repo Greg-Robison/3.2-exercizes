@@ -136,23 +136,38 @@ function findLongestWord(str){
     var longestWord = 0;
 
     for (var i = 0; i < strSplit.length; i++) {
+        // console.log(strSplit[i].length);
       if(strSplit[i].length > longestWord){
         longestWord = strSplit[i].length;
       }
     }
+
     return longestWord;
 }
-console.assert(findLongestWord("the doorway is dark") === 7);
+console.assert(findLongestWord("the longest word is Supercalifragilisticexpialidocious") === 34);
+//console.assert(findLongestWord("the doorway is dark") === 7);
 
 // ---------------------
 // Write a function filterLongWords() that takes an array of words and an integer
 //i and returns the array of words that are longer than i.
 // ---------------------
 
-function filterLongWords(words, i){
+var myArrayOfWords = ['happy', 'beer', 'apples', 'whiskey', 'hey'];
+
+function filterLongWords(array, i){
     "use strict";
-    //...
+    var myNewArray = [];
+    for(var l = 0; l < array.length; l++) {
+      if(array[l].length > i){
+        myNewArray.push(array[l]);
+      }
+    }
+    return myNewArray;
 }
+
+console.assert(filterLongWords(myArrayOfWords, 6)[0] == 'whiskey');
+
+
 
 // ---------------------
 // Write a function charFreq() that takes a string and builds a frequency listing
@@ -162,5 +177,19 @@ function filterLongWords(words, i){
 
 function charFreq(string){
     "use strict";
-    //...
-}
+    var freqList = {};
+    for (var i = 0; i < string.length; i++) {
+      var char = string.charAt(i);
+      if (freqList[char]){
+        freqList[char] ++;
+      } else {
+        freqList[char] =1;
+      }
+    }
+    return freqList;
+  }
+  // console.log(charFreq("abbabcbdbabdbdbabababcbcbab"));
+  console.assert(charFreq("abbabcbdbabdbdbabababcbcbab") ['a'] == 7);
+  console.assert(charFreq("abbabcbdbabdbdbabababcbcbab") ['b'] == 14);
+  console.assert(charFreq("abbabcbdbabdbdbabababcbcbab") ['c'] == 3);
+  console.assert(charFreq("abbabcbdbabdbdbabababcbcbab") ['d'] == 3);
